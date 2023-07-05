@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Canvas</h1>
+    <canvas id="MyCanvas" width="300" height="150"></canvas>
+
+    <script>
+        var canvas = document.getElementById('MyCanvas');
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d");
+            var grd = ctx.createLinearGradient(0, 0, 400, 0);
+            grd.addColorStop(0, '#7ed56f');
+            grd.addColorStop(1, '#28b485');
+            // ctx.fillStyle = '#0000ff';
+            // ctx.fillRect(0, 0, 150, 75);
+            // ctx.strokeStyle = '#fffffff';
+            // ctx.beginPath();
+            // ctx.moveTo(0, 0);
+            // ctx.lineTo(300, 150);
+            // ctx.stroke();
+
+            // ctx.beginPath();
+            // ctx.fillStyle = '#ccc';
+            // ctx.fillCircel = '#fff'; // not working
+            // ctx.arc(150, 75, 40, 0, 2 * Math.PI); // (width, height, radius, diamter)
+            // ctx.stroke();
+
+            // ctx.font = '26px Roboto';
+            // ctx.fillText("Canvas", 10, 50);
+            // ctx.fillStyle = '#0000ff';
+            // ctx.font = 'Italic 250px Nunito';
+
+            ctx.fillStyle = grd;
+            ctx.fillRect(0, 0, 300, 150);
+        }
+    </script>
+</body>
+
+</html>

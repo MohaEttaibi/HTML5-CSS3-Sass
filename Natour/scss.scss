@@ -1,0 +1,103 @@
+/* <nav>
+    <ul class="navigation">
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Docs</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="buttons">
+        <a href="#" class="btn-main">Sign up</a>
+        <a href="#" class="btn-hot">Get a quote</a>
+    </div>
+</nav> */
+
+// Variables
+$color-primary: #f9ed69; //yellow
+$color-secondar: #f08a5d; //orange
+$color-tertiary: #b83b5e; //pink
+$color-text-darh: #333;
+$color-text-light: #eee;
+
+// mixins
+@mixin clearfix {
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+@mixin style-link-text($color) {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $color;
+}
+
+@function divide($a, $b) {
+  @return $a / $b;
+}
+
+$width-buttom: 150px;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  margin: divide(60, 2) * 1px;
+  background-color: $color-primary;
+
+  @include clearfix;
+}
+
+.navigation {
+  list-style: none;
+  float: left;
+
+  li {
+    display: inline-block;
+    margin-left: 30px;
+
+    &:first-child {
+      margin: 0;
+    }
+
+    a:link {
+      @include style-link-text($color-text-dark);
+    }
+  }
+}
+
+.buttons {
+  float: right;
+}
+
+// Extends
+%btn-placeholder {
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 100%;
+  width: $width-text;
+  @include style-link-text($color-text-light);
+}
+
+.btn-main {
+  &:link {
+    @extend %btn-placeholder;
+    background-color: $color-secondary;
+  }
+  &:hover {
+    background-color: draken($color-secondary, 15%);
+  }
+}
+
+.btn-hot {
+  &:link {
+    @extend %btn-placeholder;
+    background-color: $color-tertiary;
+  }
+  &:hover {
+    background-color: lighten($color-tertiary, 10%);
+  }
+}
